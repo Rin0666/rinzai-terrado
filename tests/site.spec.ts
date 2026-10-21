@@ -24,7 +24,7 @@ test('homepage leads to the biography and exposes the supplied social destinatio
   await expect(page.getByRole('link', { name: 'Email Rinzai Terrado' })).toHaveAttribute('href', 'mailto:terradorinzai@gmail.com')
   await page.getByRole('link', { name: 'Learn More', exact: true }).click()
   await expect(page).toHaveURL('/about')
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Curiosity')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Get to Know me.')
 })
 
 test('project filters change results and project detail routes survive reload', async ({ page }) => {
