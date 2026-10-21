@@ -224,3 +224,7 @@ Reference: `Documents/Designs/homepage-liquid-glass-approved.png`.
 - Retain a centered “Based in the Philippines” footer.
 - Carry the same typography, neutral colors, rounded controls, and light glass surfaces through the other pages.
 - Keep the React + Vite stack, existing routes, project content, resume download, and deployment configuration.
+
+### Shared footer refinement
+
+The “Connect with me” heading, Instagram and email icons, and location now live in `src/components/Footer.tsx`, rendered once by the shared app layout on every page. This replaces the individual “Have something in mind? / Let’s make it happen” callouts and the homepage-only connection section. Extra padding places the heading lower, and the shared layout keeps the footer at the bottom of short pages. Future footer edits apply throughout the site from this one component.

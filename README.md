@@ -34,13 +34,14 @@ Browser tests cover desktop and mobile navigation, project filtering, direct rou
 
 - `src/content.ts`: professional background, skills, projects, and page metadata.
 - `src/App.tsx`: page structure, Proverbs, navigation, and interactions.
+- `src/components/Footer.tsx`: the shared “Connect with me” footer used on every page. Edit this component once to update the footer throughout the site.
 - `src/styles.css`: shared design variables, typography, responsive styles, and print layout.
 - `public/rinzai-terrado-resume.pdf`: the supplied resume, including its original contact details.
 - `public/social-card.png` and `public/favicon.svg`: sharing image and favicon.
 - `Documents/project-plan.md`: production plan and implementation status.
 - `References/`: local reference documents, excluded from Git and the public build.
 
-The approved visual reference is `Documents/Designs/homepage-liquid-glass-approved.png`. The homepage uses white space, sans-serif typography, a centered header, a translucent RT panel, one “Learn More” link to About, and a centered “Connect with me” section. Its Instagram link points to `rinzai._`; the email icon uses the resume's email address. Update both destinations in `src/content.ts`.
+The approved visual reference is `Documents/Designs/homepage-liquid-glass-approved.png`. The homepage uses white space, sans-serif typography, a centered header, a translucent RT panel, and one “Learn More” link to About. Every page ends with the same centered “Connect with me” footer, with extra space above its heading. Its Instagram link points to `rinzai._`; the email icon uses the resume's email address. Update both destinations in `src/content.ts`.
 
 The glass RT panel occupies the portrait position until a real photo is supplied. The remaining pages use the same typography, quiet dividers, and restrained glass treatments. Project graphics are concept illustrations. The four personal projects retain their prototype status. Proverbs contains the owner's supplied saying and homepage tagline. Donate is deferred until a destination is supplied.
 

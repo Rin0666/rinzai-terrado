@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router'
 import { education, experience, notFoundMeta, pageMeta, profile, projects, publication, skillGroups } from './content'
 import type { Project, ProjectCategory } from './content'
+import Footer from './components/Footer'
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d={diagonal ? 'M6 18 18 6M6 6h12v12' : 'M4 12h15m-6-6 6 6-6 6'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -55,17 +56,6 @@ function Header() {
       {navigation.map(item => <NavLink key={item.path} to={item.path} onClick={() => setOpen(false)} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{item.label}</NavLink>)}
     </nav>
   </div></header>
-}
-
-function Footer() {
-  return <footer className="site-footer shell"><p>Based in the Philippines</p></footer>
-}
-
-function SocialLinks() {
-  return <div className="social-links">
-    <a href={profile.instagramUrl} target="_blank" rel="noreferrer" className="social-link" aria-label="Instagram: rinzai._ (opens in a new tab)"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" /><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg></a>
-    <a href={`mailto:${profile.email}`} className="social-link" aria-label="Email Rinzai Terrado"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5" stroke="currentColor" strokeWidth="1.6" /><path d="m3.5 6 8.5 7 8.5-7" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg></a>
-  </div>
 }
 
 function PageEffects() {
@@ -122,19 +112,14 @@ function ProjectCard({ project }: { project: Project }) {
   return <article className="project-card"><Link to={`/projects/${project.slug}`} className="project-card-link"><ProjectArt project={project} /><div className="project-card-heading"><h3>{project.name}</h3><span className="project-card-arrow"><Arrow diagonal /></span></div><p>{project.description}</p><div className="project-meta"><span>{project.category}</span><span>Prototype</span></div></Link></article>
 }
 
-function ContactCallout() {
-  return <section className="contact-callout"><div><Label>Have something in mind?</Label><h2>Let’s make it <em>happen.</em></h2></div><Link to="/contact" className="circle-link" aria-label="Get in touch"><Arrow diagonal /></Link></section>
-}
-
 function Home() {
   return <>
     <section className="hero" aria-labelledby="home-title"><div className="hero-copy"><h1 id="home-title">Rinzai Terrado</h1><p className="hero-tagline">Making things happen.</p><Label>Python development · AI applications</Label><p className="hero-bio">I build Python applications, APIs, and automation at <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila</a>. My personal projects explore AI agents, learning tools, and more useful ways to work with data.</p><div className="hero-actions"><Link to="/about" className="button button-dark">Learn More</Link></div></div><Monogram /></section>
-    <section className="home-connect" aria-labelledby="connect-title"><h2 id="connect-title">Connect with me</h2><SocialLinks /></section>
   </>
 }
 
 function About() {
-  return <><PageHeading number="01" label="A little about me" title={<>Curiosity, with<br /><em>a practical side.</em></>}>I’m Rinzai Terrado, a Python developer and data science professional based in the Philippines.</PageHeading><section className="about-layout"><Monogram /><div className="prose"><Label>What I do</Label><h2>Connecting ideas<br />to everyday work.</h2><p>At <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila <span aria-hidden="true">↗</span></a>, I build and maintain internal applications that support marketing, analytics, and business operations.</p><p>My work brings together APIs, SQL data sources, machine learning models, and automated workflows. I help turn data and model outputs into tools that teams can use.</p><p>My personal projects explore another part of that curiosity: LLM applications, retrieval-augmented generation, natural language processing, and tool-enabled AI agents.</p><Link to="/resume" className="text-link">The full resume <Arrow /></Link></div></section><section className="section education-summary"><Label number="02">Foundations</Label><div><h2>{education.school}</h2><p>{education.degree}<br />{education.specialization}</p></div><span className="muted">{education.period}<br />{education.location}</span></section><ContactCallout /></>
+  return <><PageHeading number="01" label="A little about me" title={<>Curiosity, with<br /><em>a practical side.</em></>}>I’m Rinzai Terrado, a Python developer and data science professional based in the Philippines.</PageHeading><section className="about-layout"><Monogram /><div className="prose"><Label>What I do</Label><h2>Connecting ideas<br />to everyday work.</h2><p>At <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila <span aria-hidden="true">↗</span></a>, I build and maintain internal applications that support marketing, analytics, and business operations.</p><p>My work brings together APIs, SQL data sources, machine learning models, and automated workflows. I help turn data and model outputs into tools that teams can use.</p><p>My personal projects explore another part of that curiosity: LLM applications, retrieval-augmented generation, natural language processing, and tool-enabled AI agents.</p><Link to="/resume" className="text-link">The full resume <Arrow /></Link></div></section><section className="section education-summary"><Label number="02">Foundations</Label><div><h2>{education.school}</h2><p>{education.degree}<br />{education.specialization}</p></div><span className="muted">{education.period}<br />{education.location}</span></section></>
 }
 
 function Resume() {
@@ -143,14 +128,14 @@ function Resume() {
       <section id="skills" className="resume-section"><Label number="02">Skills & tools</Label>{skillGroups.map(group => <div key={group.name} className="skill-group"><h3>{group.name}</h3><div className="tags">{group.skills.map(skill => <span key={skill}>{skill}</span>)}</div></div>)}</section>
       <section id="education" className="resume-section"><Label number="03">Education</Label><div className="resume-entry-heading"><div><h2>{education.school}</h2><p>{education.degree}</p></div><span>{education.period}</span></div><p>{education.specialization}<br /><span className="muted">{education.location}</span></p></section>
       <section id="research" className="resume-section"><Label number="04">Research & publication</Label><h2 className="publication-title">{publication.title}</h2><p>{publication.venue}<br /><span className="muted">{publication.details}</span></p></section>
-    </div></div><ContactCallout /></>
+    </div></div></>
 }
 
 function Projects() {
   const [filter, setFilter] = useState<ProjectCategory | 'All projects'>('All projects')
   const filters: (ProjectCategory | 'All projects')[] = ['All projects', 'AI systems', 'Learning tools', 'Media tools']
   const filteredProjects = filter === 'All projects' ? projects : projects.filter(project => project.category === filter)
-  return <><PageHeading number="03" label="Projects & experiments" title={<>A few things<br /><em>I’ve been building.</em></>}>Personal prototypes exploring AI, learning, and the possibilities between an idea and a useful tool.</PageHeading><div className="project-filters" role="group" aria-label="Filter projects by category">{filters.map(item => <button key={item} className={filter === item ? 'filter-button selected' : 'filter-button'} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}<span>{item === 'All projects' ? projects.length : projects.filter(project => project.category === item).length}</span></button>)}</div><p className="sr-only" role="status">Showing {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}</p><div className="project-grid projects-page-grid">{filteredProjects.map(project => <ProjectCard key={project.slug} project={project} />)}</div><ContactCallout /></>
+  return <><PageHeading number="03" label="Projects & experiments" title={<>A few things<br /><em>I’ve been building.</em></>}>Personal prototypes exploring AI, learning, and the possibilities between an idea and a useful tool.</PageHeading><div className="project-filters" role="group" aria-label="Filter projects by category">{filters.map(item => <button key={item} className={filter === item ? 'filter-button selected' : 'filter-button'} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}<span>{item === 'All projects' ? projects.length : projects.filter(project => project.category === item).length}</span></button>)}</div><p className="sr-only" role="status">Showing {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}</p><div className="project-grid projects-page-grid">{filteredProjects.map(project => <ProjectCard key={project.slug} project={project} />)}</div></>
 }
 
 function ProjectDetail() {
@@ -162,7 +147,7 @@ function ProjectDetail() {
 }
 
 function Proverbs() {
-  return <><PageHeading number="04" label="Personal reflections & sayings" title={<>A moment<br /><em>to reflect.</em></>}>A few words to pause with.</PageHeading><section className="proverb-feature" aria-label="Personal saying"><span className="quote-mark" aria-hidden="true">“</span><blockquote>The Calmest Waves<br />Flow The <em>Firmest.</em></blockquote><span className="proverb-attribution">A personal saying · Rinzai Terrado</span><div className="wave-lines" aria-hidden="true"><svg viewBox="0 0 1000 140" fill="none"><path d="M-50 70C100-70 240 200 400 70S700-60 1050 70M-50 90C100-50 240 220 400 90S700-40 1050 90M-50 110C100-30 240 240 400 110S700-20 1050 110" stroke="currentColor" strokeWidth="1" /></svg></div></section><section className="proverb-small"><Label>Words to build by</Label><blockquote>“Making things happen.”</blockquote><span>Rinzai Terrado</span></section><ContactCallout /></>
+  return <><PageHeading number="04" label="Personal reflections & sayings" title={<>A moment<br /><em>to reflect.</em></>}>A few words to pause with.</PageHeading><section className="proverb-feature" aria-label="Personal saying"><span className="quote-mark" aria-hidden="true">“</span><blockquote>The Calmest Waves<br />Flow The <em>Firmest.</em></blockquote><span className="proverb-attribution">A personal saying · Rinzai Terrado</span><div className="wave-lines" aria-hidden="true"><svg viewBox="0 0 1000 140" fill="none"><path d="M-50 70C100-70 240 200 400 70S700-60 1050 70M-50 90C100-50 240 220 400 90S700-40 1050 90M-50 110C100-30 240 240 400 110S700-20 1050 110" stroke="currentColor" strokeWidth="1" /></svg></div></section><section className="proverb-small"><Label>Words to build by</Label><blockquote>“Making things happen.”</blockquote><span>Rinzai Terrado</span></section></>
 }
 
 function Contact() {
