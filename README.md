@@ -32,10 +32,10 @@ Browser tests cover desktop and mobile navigation, project filtering, direct rou
 
 ## Content and design
 
-- `src/content.ts`: professional background, skills, projects, and page metadata.
+- `src/content.ts`: professional background, interests, skills, projects, and page metadata.
 - `src/App.tsx`: page structure, Proverbs, navigation, and interactions.
 - `src/components/Footer.tsx`: the shared “Connect with me” footer used on every page. Edit this component once to update the footer throughout the site.
-- `src/styles.css`: shared design variables, typography, responsive styles, and print layout.
+- `src/styles.css`: shared design variables, typography, and responsive styles.
 - `public/rinzai-terrado-resume.pdf`: the supplied resume, including its original contact details.
 - `public/social-card.png` and `public/favicon.svg`: sharing image and favicon.
 - `Documents/project-plan.md`: production plan and implementation status.

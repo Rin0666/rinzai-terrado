@@ -33,6 +33,8 @@ export const skillGroups = [
   { name: 'Data & automation', skills: ['ETL', 'Data Validation', 'Cloudera', 'BigQuery', 'Jupyter Notebook', 'Looker Studio', 'Statistics', 'API Integration'] },
 ]
 
+export const interests = ['YuGiOh', 'Fishing', 'Schemes']
+
 export const education = {
   school: 'De La Salle University',
   location: 'Manila, Philippines',

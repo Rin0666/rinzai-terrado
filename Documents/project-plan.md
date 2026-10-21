@@ -53,7 +53,7 @@ The proposed initial release uses local content and does not require a database,
 | Page / area | Planned content and behavior |
 | --- | --- |
 | Home | Name, role, concise introduction, portrait, and clear links to Projects, Resume, and Contact |
-| About | Professional background, working interests, education, and personal context supplied by the owner |
+| About | Professional background and personal interests: YuGiOh, Fishing, and Schemes |
 | Resume | Readable HTML experience and skills, education, publication entry, and downloadable public PDF |
 | Projects | Project overview with links to individual case studies where sufficient material is available |
 | Proverbs | Personal sayings or reflections, with attribution where applicable; content and format pending |
@@ -184,7 +184,7 @@ Repository: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) 
 
 - React, Vite, TypeScript, React Router, plain CSS, and self-hosted fonts.
 - Home, About, Resume, Projects, four project detail pages, Proverbs, Contact, and a not-found page.
-- Responsive navigation, project category filters, resume download, print styling, and email-copy feedback.
+- Responsive navigation, project category filters, resume download, and email-copy feedback.
 - Typed professional and project content from the supplied resume, with prototype labels and qualified ForgeRouter results.
 - Generated HTML for all routes, route-specific metadata, an optional production sitemap, and a social sharing image.
 - Cloudflare Workers Static Assets configuration and a GitHub verification workflow.
@@ -228,3 +228,7 @@ Reference: `Documents/Designs/homepage-liquid-glass-approved.png`.
 ### Shared footer refinement
 
 The “Connect with me” heading, Instagram and email icons, and location now live in `src/components/Footer.tsx`, rendered once by the shared app layout on every page. This replaces the individual “Have something in mind? / Let’s make it happen” callouts and the homepage-only connection section. Extra padding places the heading lower, and the shared layout keeps the footer at the bottom of short pages. Future footer edits apply throughout the site from this one component.
+
+### Content and navigation refinement
+
+Section labels and the resume sidebar use unnumbered text. About displays the owner's interests (YuGiOh, Fishing, and Schemes) in place of the education summary; education remains on Resume. The custom print button and print-specific styling have been removed.
