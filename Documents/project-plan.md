@@ -2,7 +2,7 @@
 
 Date: October 21, 2026
 
-Status: Initial implementation verified and prepared for private GitHub; Cloudflare deployment pending account connection.
+Status: Initial implementation verified and stored in private GitHub; Cloudflare deployment pending account connection.
 
 ## 1. Project objective
 
@@ -199,6 +199,7 @@ Repository: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) 
 
 - TypeScript checks and the production build pass.
 - Browser checks: 31 passed; one desktop-only mobile-menu check intentionally skipped.
+- GitHub's verification workflow passed after the initial push, including a clean install, production build, and Chromium browser checks on Linux.
 - Automated accessibility checks pass for all pages on desktop and mobile.
 - Cloudflare's local runtime verified direct routes, real HTTP 404 responses, trailing-slash redirects, and security headers.
 - Additional layout checks pass at 320px width.
