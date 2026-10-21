@@ -2,6 +2,7 @@ export const profile = {
   name: 'Rinzai Terrado',
   role: 'Python Developer · Data Science',
   email: 'terradorinzai@gmail.com',
+  instagramUrl: 'https://www.instagram.com/rinzai._/',
   location: 'Las Piñas, Philippines',
   employer: 'Okada Manila',
   employerUrl: 'https://www.okadamanila.com/',

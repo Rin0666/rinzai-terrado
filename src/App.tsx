@@ -48,17 +48,24 @@ function Header() {
     return () => { document.removeEventListener('keydown', dismiss); document.removeEventListener('pointerdown', outside) }
   }, [open])
 
-  return <header className="site-header shell">
-    <Link to="/" className="brand" aria-label="Rinzai Terrado, home"><span className="brand-mark" aria-hidden="true">rt.</span><span>Rinzai Terrado<span className="brand-caption">Developer & builder</span></span></Link>
+  return <header className="site-header"><div className="header-inner">
+    <Link to="/" className="brand" aria-label="Rinzai Terrado, home">Rinzai Terrado</Link>
     <button ref={menuButton} className="menu-toggle" aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen(!open)}><span>{open ? 'Close' : 'Menu'}</span><span className={`menu-lines ${open ? 'is-open' : ''}`} aria-hidden="true"><i /><i /></span></button>
     <nav id="primary-navigation" ref={navRef} aria-label="Main navigation" className={`navigation ${open ? 'is-open' : ''}`}>
-      {navigation.map(item => <NavLink key={item.path} to={item.path} onClick={() => setOpen(false)} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{item.label}{item.path === '/contact' && <Arrow diagonal />}</NavLink>)}
+      {navigation.map(item => <NavLink key={item.path} to={item.path} onClick={() => setOpen(false)} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{item.label}</NavLink>)}
     </nav>
-  </header>
+  </div></header>
 }
 
 function Footer() {
-  return <footer className="site-footer shell"><Link to="/" className="footer-name">Rinzai Terrado<span>Making things happen.</span></Link><p>Based in the Philippines.<br /><span>© 2026 Rinzai Terrado</span></p><a className="text-link" href={`mailto:${profile.email}`}>Say hello <Arrow diagonal /></a></footer>
+  return <footer className="site-footer shell"><p>Based in the Philippines</p></footer>
+}
+
+function SocialLinks() {
+  return <div className="social-links">
+    <a href={profile.instagramUrl} target="_blank" rel="noreferrer" className="social-link" aria-label="Instagram: rinzai._ (opens in a new tab)"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" /><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg></a>
+    <a href={`mailto:${profile.email}`} className="social-link" aria-label="Email Rinzai Terrado"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5" stroke="currentColor" strokeWidth="1.6" /><path d="m3.5 6 8.5 7 8.5-7" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg></a>
+  </div>
 }
 
 function PageEffects() {
@@ -97,12 +104,7 @@ function PageEffects() {
 }
 
 function Monogram() {
-  return <div className="identity-art" role="img" aria-label="RT monogram, Python, data, and AI">
-    <div className="identity-top"><span>PERSONAL PORTFOLIO</span><span>RT / 01</span></div>
-    <div className="identity-center"><span className="identity-orbit orbit-one" /><span className="identity-orbit orbit-two" /><span className="monogram">rt<span>.</span></span><span className="art-cross cross-one">+</span><span className="art-cross cross-two">+</span></div>
-    <div className="identity-bottom"><span>Curiosity.<br />Made practical.</span><span className="identity-disc" aria-hidden="true"><Arrow diagonal /></span></div>
-    <div className="identity-strip"><span>PYTHON</span><span>DATA</span><span>AI</span></div>
-  </div>
+  return <div className="identity-art" role="img" aria-label="RT initials in a translucent glass panel"><span className="monogram" aria-hidden="true">RT</span></div>
 }
 
 function ProjectArt({ project }: { project: Project }) {
@@ -126,11 +128,8 @@ function ContactCallout() {
 
 function Home() {
   return <>
-    <section className="hero"><div className="hero-copy"><Label><span className="status-dot" />Python developer · AI applications</Label><h1>Making things<br /><em>happen.</em></h1><p className="hero-description">I’m Rinzai, a developer turning data and ideas into useful applications.</p><p className="hero-bio">Currently building Python applications and automation at <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila <span aria-hidden="true">↗</span></a>. Exploring what’s possible with AI along the way.</p><div className="hero-actions"><Link to="/projects" className="button button-dark">Explore my work <Arrow diagonal /></Link><Link to="/about" className="text-link">A little about me <Arrow /></Link></div></div><Monogram /></section>
-    <div className="intro-strip"><span>Based in the Philippines</span><span className="strip-line" /><span>Applications. Data. Thoughtful automation.</span><a href="#selected-work" className="scroll-cue">Scroll to explore <span aria-hidden="true">↓</span></a></div>
-    <section id="selected-work" className="section"><div className="section-heading"><div><Label number="01">Selected work</Label><h2>Ideas put <em>into practice.</em></h2></div><Link to="/projects" className="text-link">All projects <Arrow /></Link></div><div className="project-grid">{projects.slice(0, 2).map(project => <ProjectCard key={project.slug} project={project} />)}</div></section>
-    <section className="home-about section"><Label number="02">Behind the work</Label><div><h2>A developer with<br />a curious <em>mind.</em></h2><p>I work across applications, data, and automation — connecting systems, simplifying workflows, and making information useful.</p><p>Outside my professional work, I explore LLM applications, AI agents, and tools that help people learn and create.</p><Link to="/resume" className="text-link">View my experience <Arrow /></Link></div><div className="expertise-list">{['Python development', 'Data & automation', 'AI applications'].map((item, index) => <div key={item}><span>0{index + 1}</span><h3>{item}</h3><Arrow diagonal /></div>)}</div></section>
-    <ContactCallout />
+    <section className="hero" aria-labelledby="home-title"><div className="hero-copy"><h1 id="home-title">Rinzai Terrado</h1><p className="hero-tagline">Making things happen.</p><Label>Python development · AI applications</Label><p className="hero-bio">I build Python applications, APIs, and automation at <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila</a>. My personal projects explore AI agents, learning tools, and more useful ways to work with data.</p><div className="hero-actions"><Link to="/about" className="button button-dark">Learn More</Link></div></div><Monogram /></section>
+    <section className="home-connect" aria-labelledby="connect-title"><h2 id="connect-title">Connect with me</h2><SocialLinks /></section>
   </>
 }
 

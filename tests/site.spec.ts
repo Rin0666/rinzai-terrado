@@ -5,7 +5,7 @@ test('navigation works, updates metadata, and closes the mobile menu', async ({ 
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Making thingshappen.')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Rinzai Terrado')
   if (isMobile) await page.getByRole('button', { name: 'Menu' }).click()
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Resume', exact: true }).click()
   await expect(page).toHaveURL('/resume')
@@ -16,6 +16,15 @@ test('navigation works, updates metadata, and closes the mobile menu', async ({ 
   await page.goBack()
   await expect(page).toHaveTitle('Rinzai Terrado — Python Developer')
   expect(errors).toEqual([])
+})
+
+test('homepage leads to the biography and exposes the supplied social destinations', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('link', { name: /Instagram:/ })).toHaveAttribute('href', 'https://www.instagram.com/rinzai._/')
+  await expect(page.getByRole('link', { name: 'Email Rinzai Terrado' })).toHaveAttribute('href', 'mailto:terradorinzai@gmail.com')
+  await page.getByRole('link', { name: 'Learn More', exact: true }).click()
+  await expect(page).toHaveURL('/about')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Curiosity')
 })
 
 test('project filters change results and project detail routes survive reload', async ({ page }) => {

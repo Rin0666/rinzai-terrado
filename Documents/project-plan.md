@@ -163,14 +163,9 @@ Use one deployment mechanism to avoid duplicate deployments. Any future service 
 
 ## 10. Decisions still open
 
-- Primary audience and target roles.
-- TypeScript, plain CSS, and content format confirmation.
-- Separate pages versus sections on one page; rendering and metadata strategy.
 - Final portrait, project screenshots, professional profile links, and public resume PDF.
-- Proverbs content and whether it is ready for launch.
 - Donate inclusion, provider, and navigation placement.
-- Email links versus a contact form.
-- GitHub repository name and visibility; Cloudflare account and custom domain details.
+- Cloudflare account connection and custom domain details.
 - Analytics needs and the maintenance cadence.
 
 ## 11. Implementation record — October 21, 2026
@@ -198,7 +193,7 @@ Repository: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) 
 ### Verification results
 
 - TypeScript checks and the production build pass.
-- Browser checks: 31 passed; one desktop-only mobile-menu check intentionally skipped.
+- Browser checks: 33 passed; one desktop-only mobile-menu check intentionally skipped.
 - GitHub's verification workflow passed after the initial push, including a clean install, production build, and Chromium browser checks on Linux.
 - Automated accessibility checks pass for all pages on desktop and mobile.
 - Cloudflare's local runtime verified direct routes, real HTTP 404 responses, trailing-slash redirects, and security headers.
@@ -214,3 +209,18 @@ Repository: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) 
 - Define a Donate destination if that feature is wanted.
 
 Detailed development, deployment, update, and rollback instructions are in `README.md` at the project root.
+
+## 12. Approved aesthetic revision — October 21, 2026
+
+Reference: `Documents/Designs/homepage-liquid-glass-approved.png`.
+
+- Replace the original editorial style with a white, minimalist layout and self-hosted sans-serif typography.
+- Position the name and navigation inward within a centered desktop header.
+- Use “Rinzai Terrado” as the homepage heading, followed by “Making things happen”, the Python development and AI applications specialty line, and the supplied biography.
+- Present the initials in a portrait-shaped glass panel with subtle reflections and a soft shadow.
+- Use a single “Learn More” button leading to the About page.
+- Replace the homepage's work summaries with a centered “Connect with me” section containing Instagram and email links.
+- Link Instagram to the supplied `rinzai._` profile and use `terradorinzai@gmail.com` for email.
+- Retain a centered “Based in the Philippines” footer.
+- Carry the same typography, neutral colors, rounded controls, and light glass surfaces through the other pages.
+- Keep the React + Vite stack, existing routes, project content, resume download, and deployment configuration.
