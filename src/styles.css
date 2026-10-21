@@ -17,11 +17,12 @@
   --ink: #1c2027;
   --muted: #626c7b;
   --line: #e6e9ee;
+  --header-height: 73px;
   --glass: linear-gradient(135deg, #ffffffed, #f1f3f6ad 60%, #faf9f6d9);
   --glass-shadow: 0 12px 28px #1923340a, 0 3px 8px #19233405, inset 0 1px 1px #fff;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 28px); }
 body { margin: 0; }
 #root { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
 main.shell { flex: 1; }
@@ -40,7 +41,7 @@ h3 { font-size: 19px; }
 em { color: inherit; font-style: normal; font-weight: inherit; }
 svg { flex-shrink: 0; }
 .shell { width: min(100% - 80px, 1120px); margin-inline: auto; }
-.site-header { height: 73px; flex-shrink: 0; border-bottom: 1px solid var(--line); }
+.site-header { position: sticky; top: 0; z-index: 50; height: var(--header-height); flex-shrink: 0; border-bottom: 1px solid var(--line); background: #fffffff0; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 .header-inner { width: min(100% - 80px, 880px); height: 100%; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
 .brand { font-size: 16px; letter-spacing: -.025em; font-weight: 500; white-space: nowrap; }
 .navigation { display: flex; align-items: center; gap: 30px; }
@@ -99,7 +100,7 @@ svg { flex-shrink: 0; }
 .resume-heading .page-heading { margin: 0; }
 .resume-heading .button { margin-bottom: 60px; }
 .resume-layout { display: grid; grid-template-columns: 185px minmax(0, 1fr); gap: 75px; padding: 38px 0 75px; border-top: 1px solid var(--line); }
-.resume-sidebar { position: sticky; top: 28px; align-self: start; }
+.resume-sidebar { position: sticky; top: calc(var(--header-height) + 28px); align-self: start; }
 .resume-sidebar > .eyebrow { margin-bottom: 20px; }
 .resume-sidebar > a { display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding: 13px 0; font-size: 12px; }
 .resume-sidebar > a:hover { text-decoration: underline; }
