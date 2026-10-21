@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.cache/
+.wrangler/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+*.local
+References/
+Documents/Prompt.md
