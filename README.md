@@ -4,17 +4,6 @@ A resume and portfolio built with React, Vite, TypeScript, and plain CSS. The pr
 
 Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (private). Review images are in `Documents/Previews/`.
 
-```
-
-## Checks
-
-```sh
-npm run check
-npm run build
-npm run test:e2e
-```
-
-Browser tests cover desktop and mobile navigation, project filtering, direct routes, the resume download, clipboard feedback, horizontal overflow, automated WCAG checks, and content without JavaScript. Local tests use installed Google Chrome. CI installs Playwright Chromium. Automated checks complement a visual and keyboard review.
 
 ## Content and design
 
