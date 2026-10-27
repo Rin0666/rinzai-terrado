@@ -4,20 +4,6 @@ A resume and portfolio built with React, Vite, TypeScript, and plain CSS. The pr
 
 Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (private). Review images are in `Documents/Previews/`.
 
-## Run locally
-
-Use Node.js 24 LTS and npm.
-
-```sh
-npm ci
-npm run dev
-```
-
-Open the local URL printed by Vite. To review the production output:
-
-```sh
-npm run build
-npm run preview
 ```
 
 ## Checks
