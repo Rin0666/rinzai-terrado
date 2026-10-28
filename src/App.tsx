@@ -9,10 +9,6 @@ function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d={diagonal ? 'M6 18 18 6M6 6h12v12' : 'M4 12h15m-6-6 6 6-6 6'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 }
 
-function DownloadIcon() {
-  return <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-}
-
 function Label({ children }: { children: ReactNode }) {
   return <p className="eyebrow">{children}</p>
 }
@@ -114,21 +110,69 @@ function ProjectCard({ project }: { project: Project }) {
 
 function Home() {
   return <>
-    <section className="hero" aria-labelledby="home-title"><div className="hero-copy"><h1 id="home-title">Rinzai Terrado</h1><p className="hero-tagline">Making things happen.</p><Label>Python development · AI applications</Label><p className="hero-bio">I build Python applications, APIs, and automation at <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila</a>. My personal projects explore AI agents, learning tools, and more useful ways to work with data.</p><div className="hero-actions"><Link to="/about" className="button button-dark">Learn More</Link></div></div><Monogram /></section>
+    <section className="hero" aria-labelledby="home-title"><div className="hero-copy"><h1 id="home-title">Rinzai Terrado</h1><p className="hero-tagline">Making things happen.</p><Label>Python development · AI applications</Label><p className="hero-bio">I build Python applications, APIs, machine learning workflows, and automation at <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila</a>. My background in marketing analytics informs how I turn data into useful tools, while my personal projects explore AI systems.</p><div className="hero-actions"><Link to="/about" className="button button-dark">Learn More</Link></div></div><Monogram /></section>
   </>
 }
 
 function About() {
-  return <><PageHeading label="A little about me" title={<>Get to Know me.</>}>I’m Rinzai Terrado, a Python developer and data science professional based in the Philippines.</PageHeading><section className="about-layout"><Monogram /><div className="prose"><Label>What I do</Label><h2>Connecting ideas<br />to everyday work.</h2><p>At <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila <span aria-hidden="true">↗</span></a>, I build and maintain internal applications that support marketing, analytics, and business operations.</p><p>My work brings together APIs, SQL data sources, machine learning models, and automated workflows. I help turn data and model outputs into tools that teams can use.</p><p>My personal projects explore another part of that curiosity: LLM applications, retrieval-augmented generation, natural language processing, and tool-enabled AI agents.</p><Link to="/resume" className="text-link">The full resume <Arrow /></Link></div></section><section className="section interests-summary" aria-labelledby="interests-heading"><h2 id="interests-heading">Interests</h2><ul className="interests-list">{interests.map(interest => <li key={interest}>{interest}</li>)}</ul></section></>
+  return <><PageHeading label="A little about me" title={<>Get to Know me.</>}>I’m Rinzai Terrado, a Python developer with a background in data analytics, based in the Philippines.</PageHeading><section className="about-layout"><Monogram /><div className="prose"><Label>What I do</Label><h2>Connecting ideas<br />to everyday work.</h2><p>At <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila <span aria-hidden="true">↗</span></a>, I build and maintain internal applications that support marketing, analytics, and business operations.</p><p>My work brings together APIs, SQL data sources, machine learning models, and automated workflows. I help turn data and model outputs into tools that teams can use.</p><p>Outside of work, I prototype LLM routing, AI-powered learning tools, agent workflows, and video analysis. I’m also developing familiarity with retrieval-augmented generation (RAG), MCP, and NLP.</p><Link to="/resume" className="text-link">The full resume <Arrow /></Link></div></section><section className="section interests-summary" aria-labelledby="interests-heading"><h2 id="interests-heading">Interests</h2><ul className="interests-list">{interests.map(interest => <li key={interest}>{interest}</li>)}</ul></section></>
 }
 
 function Resume() {
-  return <><div className="resume-heading"><PageHeading label="Experience & background" title={<>The work<br /><em>so far.</em></>}>Python development, data science, and a growing collection of things built and learned.</PageHeading><a href={profile.resumeUrl} download className="button button-outline"><DownloadIcon />Download resume <span className="button-format">PDF</span></a></div><div className="resume-layout"><aside className="resume-sidebar"><p className="eyebrow">On this page</p><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#research">Research</a></aside><div className="resume-content">
-      <section id="experience" className="resume-section"><Label>Experience</Label><div className="resume-entry-heading"><div><h2>{experience.company}</h2><p>{experience.role}</p></div><span>{experience.period}</span></div><ul className="experience-list">{experience.responsibilities.map(item => <li key={item}>{item}</li>)}</ul></section>
-      <section id="skills" className="resume-section"><Label>Skills & tools</Label>{skillGroups.map(group => <div key={group.name} className="skill-group"><h3>{group.name}</h3><div className="tags">{group.skills.map(skill => <span key={skill}>{skill}</span>)}</div></div>)}</section>
-      <section id="education" className="resume-section"><Label>Education</Label><div className="resume-entry-heading"><div><h2>{education.school}</h2><p>{education.degree}</p></div><span>{education.period}</span></div><p>{education.specialization}<br /><span className="muted">{education.location}</span></p></section>
-      <section id="research" className="resume-section"><Label>Research & publication</Label><h2 className="publication-title">{publication.title}</h2><p>{publication.venue}<br /><span className="muted">{publication.details}</span></p></section>
-    </div></div></>
+  return <>
+    <div className="resume-heading">
+      <PageHeading label="Experience & background" title={<>The work<br /><em>so far.</em></>}>Python development, data analytics, and personal AI/ML explorations.</PageHeading>
+      <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="button button-outline"><Arrow diagonal />View latest resume <span className="button-format">Canva</span></a>
+    </div>
+    <div className="resume-layout">
+      <aside className="resume-sidebar">
+        <p className="eyebrow">On this page</p>
+        <a href="#summary">Summary</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#selected-projects">AI projects</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+      </aside>
+      <div className="resume-content">
+        <section id="summary" className="resume-section">
+          <Label>Professional summary</Label>
+          <p className="resume-summary">{profile.summary}</p>
+        </section>
+        <section id="experience" className="resume-section">
+          <Label>Professional experience</Label>
+          <h2 className="experience-company">Okada Manila</h2>
+          {experience.map(entry => <div className="experience-role" key={entry.role}>
+            <div className="resume-entry-heading"><h3>{entry.role}</h3><span>{entry.period}</span></div>
+            <ul className="experience-list">{entry.responsibilities.map(item => <li key={item}>{item}</li>)}</ul>
+          </div>)}
+        </section>
+        <section id="skills" className="resume-section">
+          <Label>Skills & tools</Label>
+          {skillGroups.map(group => <div key={group.name} className="skill-group"><h3>{group.name}</h3><div className="tags">{group.skills.map(skill => <span key={skill}>{skill}</span>)}</div></div>)}
+        </section>
+        <section id="selected-projects" className="resume-section">
+          <Label>Selected AI projects</Label>
+          <div className="resume-project-list">
+            {projects.map(project => <div key={project.slug} className="resume-project-entry">
+              <Link to={`/projects/${project.slug}`} className="text-link">{project.name} <Arrow diagonal /></Link>
+              <p>{project.description} <span className="muted">Prototype</span></p>
+            </div>)}
+          </div>
+        </section>
+        <section id="education" className="resume-section">
+          <Label>Education</Label>
+          <div className="resume-entry-heading"><div><h2>{education.school}</h2><p>{education.degree}</p></div><span>{education.period}</span></div>
+          <p>{education.specialization}<br /><span className="muted">{education.location}</span></p>
+        </section>
+        <section id="research" className="resume-section">
+          <Label>Research & publication</Label>
+          <h2 className="publication-title">{publication.title}</h2>
+          <p>{publication.venue}<br /><span className="muted">{publication.details}</span></p>
+        </section>
+      </div>
+    </div>
+  </>
 }
 
 function Projects() {

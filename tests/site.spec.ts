@@ -11,6 +11,8 @@ test('navigation works, updates metadata, and closes the mobile menu', async ({ 
   await expect(page).toHaveURL('/resume')
   await expect(page).toHaveTitle('Resume — Rinzai Terrado')
   await expect(page.getByRole('heading', { name: 'Okada Manila' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Python Developer, Data Science' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Data Analyst, Strategic Marketing' })).toBeVisible()
   if (isMobile) await expect(page.getByRole('button', { name: 'Menu' })).toHaveAttribute('aria-expanded', 'false')
   await expect(page.locator('main')).toBeFocused()
   await page.goBack()
@@ -39,14 +41,10 @@ test('project filters change results and project detail routes survive reload', 
   await expect(page.getByRole('article')).toHaveCount(4)
 })
 
-test('the original resume is downloadable and contact clipboard feedback works', async ({ page, context, browserName }) => {
-  const response = await page.request.get('/rinzai-terrado-resume.pdf')
-  expect(response.ok()).toBeTruthy()
-  expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-')
+test('the resume links to the current Canva edition and contact clipboard feedback works', async ({ page, context, browserName }) => {
   await page.goto('/resume')
-  const downloadPromise = page.waitForEvent('download')
-  await page.getByRole('link', { name: /Download resume/ }).click()
-  expect((await downloadPromise).suggestedFilename()).toBe('rinzai-terrado-resume.pdf')
+  await expect(page.getByRole('link', { name: /View latest resume/ })).toHaveAttribute('href', 'https://www.canva.com/d/F86H5QFSMO394Bq')
+  await expect(page.getByRole('link', { name: /View latest resume/ })).toHaveAttribute('target', '_blank')
   if (browserName === 'chromium') await context.grantPermissions(['clipboard-read', 'clipboard-write'])
   await page.goto('/contact')
   await page.getByRole('button', { name: 'Copy email', exact: true }).click()

@@ -401,3 +401,17 @@ svg { flex-shrink: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+
+/* Resume: distinct career progression and current Canva source */
+.resume-summary { max-width: 68ch; color: #5b6574; font-size: 14px; line-height: 1.85; }
+.experience-company { font-size: 25px; margin: 0 0 24px; }
+.experience-role + .experience-role { border-top: 1px solid var(--line); padding-top: 28px; margin-top: 25px; }
+.experience-role .resume-entry-heading h3 { font-size: 16px; line-height: 1.45; font-weight: 600; }
+.resume-project-entry + .resume-project-entry { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.resume-project-entry .text-link { font-size: 15px; font-weight: 600; }
+.resume-project-entry p { font-size: 13px; line-height: 1.75; color: #5b6574; margin-top: 6px; }
+@media (max-width: 580px) {
+  .experience-role .resume-entry-heading { flex-direction: column; gap: 5px; }
+  .experience-role .resume-entry-heading > span { white-space: normal; padding-top: 0; }
+}

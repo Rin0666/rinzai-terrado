@@ -1,36 +1,49 @@
 export const profile = {
   name: 'Rinzai Terrado',
-  role: 'Python Developer · Data Science',
+  role: 'Python Developer · Data Science · AI/ML Applications',
   email: 'terradorinzai@gmail.com',
   instagramUrl: 'https://www.instagram.com/rinzai._/',
   location: 'Las Piñas, Philippines',
   employer: 'Okada Manila',
   employerUrl: 'https://www.okadamanila.com/',
-  resumeUrl: '/rinzai-terrado-resume.pdf',
-  summary: 'Python developer and data science professional building internal applications, APIs, machine learning workflows, and business automation.',
+  resumeUrl: 'https://www.canva.com/d/F86H5QFSMO394Bq',
+  summary: 'Python developer and data analytics professional experienced in building internal applications, REST APIs, SQL-based data pipelines, and machine learning workflows. I build automation and reporting tools for enterprise operations and explore LLM applications, model routing, and AI agents through personal projects.',
 }
 
-export const experience = {
-  company: 'Okada Manila',
-  role: 'Python Developer, Data Science',
-  period: 'September 2024 — Present',
-  responsibilities: [
-    'Build and maintain Python applications that support marketing, analytics, and business operations.',
-    'Develop APIs and backend services for internal teams and automated workflows.',
-    'Deploy machine learning models as reusable tools for analysts and business users.',
-    'Automate promotional offer workflows, including award loading and SMS processes through API integrations.',
-    'Integrate SQL data sources and design database schemas for applications, reporting, and operational processes.',
-    'Develop event-driven workflows, ETL pipelines, and automated reports; clean, validate, and transform data for downstream use.',
-    'Write unit tests for applications, APIs, and automation workflows to validate business logic and reduce regressions.',
-    'Perform QA and data validation for online game deployments, investigating configuration and calculation discrepancies.',
-    'Work with Linux and Cloudera-based environments for data processing and ETL workloads.',
-  ],
-}
+export const experience = [
+  {
+    company: 'Okada Manila',
+    role: 'Python Developer, Data Science',
+    period: 'Apr 2026 — Present',
+    responsibilities: [
+      'Build and maintain Python applications, REST APIs, and backend services supporting marketing operations, analytics, and internal reporting.',
+      'Integrate SQL databases and internal APIs to automate promotional reward loading, SMS communication workflows, and operational processes.',
+      'Deploy regression and time-series machine learning workflows as reusable tools for analysts and business users.',
+      'Develop event-driven automation, ETL processes, and reporting jobs; clean, transform, and validate data from enterprise systems.',
+      'Apply unit testing, SQL schema design, and debugging to improve the reliability of applications and automation workflows.',
+      'Support Docker, Linux, and Cloudera-based environments, and investigate configuration and calculation discrepancies during game-deployment QA.',
+    ],
+  },
+  {
+    company: 'Okada Manila',
+    role: 'Data Analyst, Strategic Marketing',
+    period: 'Sep 2024 — Apr 2026',
+    responsibilities: [
+      'Analyzed casino marketing campaigns through player engagement, redemption activity, ROI, theoretical win, and incremental revenue against baseline performance.',
+      'Examined player frequency, spending patterns, and customer value to inform segmentation, offer targeting, and promotional reward allocation.',
+      'Extracted, cleaned, reconciled, and validated enterprise data with SQL to deliver consistent reporting and trustworthy analysis.',
+      'Evaluated promotional budgets, reward structures, and projected gaming activity to support campaign cost and revenue assessments.',
+      'Produced performance reports and worked with marketing stakeholders on KPI definitions, analytical requirements, and campaign improvements.',
+    ],
+  },
+]
 
 export const skillGroups = [
-  { name: 'Development', skills: ['Python', 'SQL', 'REST APIs', 'HTML', 'CSS', 'JavaScript', 'Git', 'Linux'] },
-  { name: 'AI & machine learning', skills: ['Machine Learning', 'LLM Applications', 'RAG', 'NLP', 'AI Agents', 'MCP', 'Prompt Engineering'] },
-  { name: 'Data & automation', skills: ['ETL', 'Data Validation', 'Cloudera', 'BigQuery', 'Jupyter Notebook', 'Looker Studio', 'Statistics', 'API Integration'] },
+  { name: 'Languages & development', skills: ['Python', 'SQL', 'JavaScript', 'HTML', 'CSS', 'REST APIs'] },
+  { name: 'Data & machine learning', skills: ['ETL', 'Data validation', 'Statistical analysis', 'Regression', 'Time-series modeling', 'Business intelligence'] },
+  { name: 'AI & LLMs (personal projects)', skills: ['LLM applications', 'Prompt engineering', 'Model routing', 'AI agents', 'Tool calling', 'RAG (familiarity)', 'MCP (familiarity)', 'NLP (familiarity)'] },
+  { name: 'Platforms & tools', skills: ['Git', 'Docker', 'Linux', 'Cloudera', 'Hive / Impala', 'BigQuery', 'Jupyter Notebook', 'Looker Studio'] },
+  { name: 'Professional', skills: ['Stakeholder collaboration', 'Requirements analysis', 'Analytical problem-solving'] },
 ]
 
 export const interests = ['YuGiOh', 'Fishing', 'Schemes']
@@ -67,46 +80,46 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'forge-router', number: '01', name: 'ForgeRouter', subtitle: 'A more considered route to AI.', category: 'AI systems',
-    description: 'An AI routing prototype exploring how to reduce unnecessary LLM token usage.',
+    description: 'An LLM routing prototype exploring task-based model selection and inference efficiency.',
     tags: ['LLM routing', 'Token efficiency'],
-    overview: 'ForgeRouter explores routing tasks through an AI workflow with the goal of reducing unnecessary token consumption. The project is a prototype for investigating efficiency across tested tasks.',
-    focus: ['Routing tasks in an LLM workflow', 'Reducing unnecessary token consumption', 'Comparing token usage on tested tasks'],
+    overview: 'ForgeRouter is an LLM routing prototype exploring task-based model selection and inference efficiency, with token usage measured on tested tasks.',
+    focus: ['Task-based model selection', 'Inference and token efficiency', 'Comparing token consumption across tested tasks'],
     outcome: 'Roughly 50% lower token consumption was observed on tested tasks. This is a prototype result for those tasks, rather than a general performance guarantee.',
     diagram: ['Task', 'Route', 'Response'],
   },
   {
     slug: 'study-buddy', number: '02', name: 'StudyBuddy', subtitle: 'A little structure for learning.', category: 'Learning tools',
-    description: 'An AI study companion for personalized study plans, quizzes, and short lessons.',
+    description: 'An AI learning prototype generating personalized study plans, quizzes, lessons, and presentation content.',
     tags: ['AI learning', 'Content generation'],
-    overview: 'StudyBuddy is a prototype that uses AI to generate personalized study plans, quizzes, short lessons, and presentation content. It explores how generated material can support a more structured study experience.',
-    focus: ['Personalized study-plan generation', 'Quizzes and short lesson content', 'Presentation-content generation'],
+    overview: 'StudyBuddy uses LLM integration and prompt-driven structured outputs to generate personalized study plans, quizzes, short lessons, and presentation content.',
+    focus: ['LLM integration', 'Prompt-driven structured outputs', 'Study plans, quizzes, lessons, and presentation content'],
     outcome: 'A personal prototype exploring AI-assisted study content, from an initial study plan to quizzes, short lessons, and presentation material.',
     diagram: ['Topic', 'Study plan', 'Practice'],
   },
   {
     slug: 'milady', number: '03', name: 'MiLady', subtitle: 'Exploring the personal AI agent.', category: 'AI systems',
-    description: 'A personal agent prototype built with the Hermes Agent ecosystem.',
+    description: 'A personal AI agent prototype exploring tool calling and multi-step workflows with Hermes Agent.',
     tags: ['AI agents', 'Tool use'],
-    overview: 'MiLady is a prototype personal AI agent built using the Hermes Agent ecosystem. It provides a place to explore tool-enabled agent workflows and how agents interact with available capabilities.',
-    focus: ['Personal AI agent workflows', 'Tool-enabled interactions', 'Exploration of the Hermes Agent ecosystem'],
+    overview: 'MiLady is a personal AI agent prototype using the Hermes Agent ecosystem to explore tool calling, multi-step task execution, and agent workflow orchestration.',
+    focus: ['Tool calling', 'Multi-step task execution', 'Agent workflow orchestration with Hermes Agent'],
     outcome: 'A personal prototype used to explore tool-enabled agent workflows in the Hermes Agent ecosystem.',
     diagram: ['Request', 'Agent + tools', 'Action'],
   },
   {
     slug: 'viral-cut', number: '04', name: 'ViralCut', subtitle: 'Finding moments in longer stories.', category: 'Media tools',
-    description: 'An AI-assisted prototype for finding candidate clips in YouTube video content.',
+    description: 'An AI-assisted prototype identifying candidate short-form clips from YouTube videos.',
     tags: ['Video', 'AI-assisted selection'],
-    overview: 'ViralCut explores using AI to identify candidate clips from YouTube video content. The project focuses on discovering portions of longer videos that could be considered for shorter clips.',
-    focus: ['Exploring longer-form video content', 'AI-assisted identification of candidate clips', 'Supporting clip selection'],
+    overview: 'ViralCut explores content analysis and video processing concepts to identify candidate short-form clips from longer YouTube videos.',
+    focus: ['YouTube video content analysis', 'AI-assisted candidate clip identification', 'Video processing concepts'],
     outcome: 'A prototype exploring AI-assisted clip discovery and candidate selection from longer video content.',
     diagram: ['Video', 'Identify', 'Candidates'],
   },
 ]
 
 export const pageMeta: Record<string, { title: string; description: string }> = {
-  '/': { title: 'Rinzai Terrado — Python Developer', description: 'Python developer building applications, data workflows, and business automation. Explore my experience and personal AI projects.' },
-  '/about': { title: 'About — Rinzai Terrado', description: 'Get to know Rinzai Terrado, a Python developer and data science professional based in the Philippines.' },
-  '/resume': { title: 'Resume — Rinzai Terrado', description: 'Professional experience, technical skills, education, and research. View and download Rinzai Terrado’s resume.' },
+  '/': { title: 'Rinzai Terrado — Python Developer', description: 'Python developer and former data analyst building REST APIs, data pipelines, machine learning workflows, and personal AI prototypes.' },
+  '/about': { title: 'About — Rinzai Terrado', description: 'Get to know Rinzai Terrado, a Python developer with a background in casino marketing analytics and personal AI projects.' },
+  '/resume': { title: 'Resume — Rinzai Terrado', description: 'Python development and data analytics experience, technical skills, selected AI prototypes, education, and research.' },
   '/projects': { title: 'Projects — Rinzai Terrado', description: 'Personal prototypes in AI routing, learning, agents, and video: ForgeRouter, StudyBuddy, MiLady, and ViralCut.' },
   '/contact': { title: 'Contact — Rinzai Terrado', description: 'Get in touch with Rinzai Terrado about Python development, data workflows, and AI applications.' },
   '/proverbs': { title: 'Proverbs — Rinzai Terrado', description: 'Personal reflections and sayings by Rinzai Terrado. The Calmest Waves Flow The Firmest.' },

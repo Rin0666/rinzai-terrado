@@ -2,7 +2,7 @@
 
 A resume and portfolio built with React, Vite, TypeScript, and plain CSS. The production build generates an HTML document for every page, then React hydrates it for navigation and interactions. Cloudflare serves the generated files without a backend.
 
-Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (private). Review images are in `Documents/Previews/`.
+Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (public). Review images are in `Documents/Previews/`.
 
 
 ## Content and design
@@ -11,7 +11,7 @@ Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (pri
 - `src/App.tsx`: page structure, Proverbs, navigation, and interactions.
 - `src/components/Footer.tsx`: the shared “Connect with me” footer used on every page. Edit this component once to update the footer throughout the site.
 - `src/styles.css`: shared design variables, typography, and responsive styles.
-- `public/rinzai-terrado-resume.pdf`: the supplied resume, including its original contact details.
+- `public/rinzai-terrado-resume.pdf`: archived PDF from an earlier resume edition (not linked from the website). The current resume button links to [Rinzai Terrado - Revised Resume (2026)](https://www.canva.com/d/F86H5QFSMO394Bq) on Canva.
 - `public/social-card.png` and `public/favicon.svg`: sharing image and favicon.
 - `Documents/project-plan.md`: production plan and implementation status.
 - `References/`: local reference documents, excluded from Git and the public build.
@@ -45,7 +45,7 @@ The configuration serves `dist`, removes trailing slashes, and uses `404.html` f
 
 ## Update and rollback
 
-Make content changes on a branch, run the checks, review the preview, then merge to `main`. Update the HTML resume and PDF together when professional details change. Keep the portrait, employer details, project links, and contact information current.
+Make content changes on a branch, run the checks, review the preview, then merge to `main`. Keep `src/content.ts` and the resume page synchronized with the latest Canva resume. The older PDF remains archived; do not relink it unless replaced by the current edition. Keep the portrait, employer details, project links, and contact information current.
 
 To roll back, restore the last known working Cloudflare deployment in Version History, then revert the corresponding Git commit and verify the next build. Check a nested project URL, unknown URL, resume download, contact action, and production metadata after a deployment or rollback.
 
