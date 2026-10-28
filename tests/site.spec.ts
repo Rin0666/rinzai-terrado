@@ -41,10 +41,10 @@ test('project filters change results and project detail routes survive reload', 
   await expect(page.getByRole('article')).toHaveCount(4)
 })
 
-test('the resume links to the current Canva edition and contact clipboard feedback works', async ({ page, context, browserName }) => {
+test('the resume has a direct PDF download and contact clipboard feedback works', async ({ page, context, browserName }) => {
   await page.goto('/resume')
-  await expect(page.getByRole('link', { name: /View latest resume/ })).toHaveAttribute('href', 'https://www.canva.com/d/F86H5QFSMO394Bq')
-  await expect(page.getByRole('link', { name: /View latest resume/ })).toHaveAttribute('target', '_blank')
+  await expect(page.getByRole('link', { name: /Download resume/ })).toHaveAttribute('href', '/rinzai-terrado-resume.pdf')
+  await expect(page.getByRole('link', { name: /Download resume/ })).toHaveAttribute('download', 'rinzai-terrado-resume.pdf')
   if (browserName === 'chromium') await context.grantPermissions(['clipboard-read', 'clipboard-write'])
   await page.goto('/contact')
   await page.getByRole('button', { name: 'Copy email', exact: true }).click()
