@@ -6,7 +6,7 @@ export const profile = {
   location: 'Las Piñas, Philippines',
   employer: 'Okada Manila',
   employerUrl: 'https://www.okadamanila.com/',
-  resumeUrl: 'https://www.canva.com/d/F86H5QFSMO394Bq',
+  resumeUrl: '/rinzai-terrado-resume.pdf',
   summary: 'Python developer and data analytics professional experienced in building internal applications, REST APIs, SQL-based data pipelines, and machine learning workflows. I build automation and reporting tools for enterprise operations and explore LLM applications, model routing, and AI agents through personal projects.',
 }
 
