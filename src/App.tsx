@@ -122,7 +122,7 @@ function Resume() {
   return <>
     <div className="resume-heading">
       <PageHeading label="Experience & background" title={<>The work<br /><em>so far.</em></>}>Python development, data analytics, and personal AI/ML explorations.</PageHeading>
-      <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="button button-outline"><Arrow diagonal />View latest resume <span className="button-format">Canva</span></a>
+      <a href={profile.resumeUrl} download="rinzai-terrado-resume.pdf" className="button button-outline"><Arrow diagonal />Download resume <span className="button-format">PDF</span></a>
     </div>
     <div className="resume-layout">
       <aside className="resume-sidebar">
