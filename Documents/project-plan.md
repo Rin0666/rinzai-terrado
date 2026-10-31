@@ -257,3 +257,17 @@ Validation: TypeScript and the production build pass, including verification of 
 - Verified Cloudflare’s local runtime returns permanent redirects with section fragments, real HTTP 404 responses for unknown URLs, and security headers.
 
 Validation: TypeScript, the production build, and desktop/mobile browser checks pass (25 passed, one expected desktop skip for mobile-only menu behavior). Checks cover section scrolling and focus, active navigation, history, deep links, legacy redirects, inline project filters and notes, accessibility, the original images, clipboard feedback, reduced motion, and use without JavaScript. All seven section links were also checked in Cloudflare’s local runtime at seven widths from 320px to 1440px.
+
+
+## 15. Combined introduction — October 31, 2026
+
+Merged Home and About into one introduction with the name, tagline, professional background, personal AI interests, and a single portrait. Removed the Learn More button and repeated biography heading and photo. The owner’s interests follow the biography, with a direct link to the Resume section. The About navigation item, legacy `/about` redirect, and `/#home` brand link all lead to the combined introduction.
+
+
+### Review, refactor, and mobile polish
+
+Separated the section components, shared UI, header, anchor navigation, and metadata behavior from the main app. Project filter categories now derive from the displayed projects. On mobile, moved the portrait between the name and biography, enlarged labels and tap targets, and bounded the menu to the screen height for landscape use. Replaced font-dependent decorative icons with SVG and removed a redundant Contact divider and unused styles.
+
+Validation includes the build, browser and accessibility checks, and layout review of all seven sections plus expanded project notes at seven sizes from 320px phones to desktop, including mobile landscape. The original portrait and donation image files remain unchanged.
+
+Final validation: TypeScript and the production build pass. Browser checks report 27 passed and three expected desktop skips for mobile-only behavior, including portrait placement, 44px tap targets, landscape menu access, keyboard interaction, deep links, and accessibility.

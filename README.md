@@ -8,7 +8,10 @@ Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (pub
 ## Content and design
 
 - `src/content.ts`: professional background, interests, skills, projects, section navigation, legacy redirects, and site metadata.
-- `src/App.tsx`: page sections, expandable project notes, anchor navigation, and interactions.
+- `src/App.tsx`: page assembly, not-found view, and legacy path handling.
+- `src/sections/`: the introduction, resume, projects, commissions, proverbs, contact, and donation sections.
+- `src/components/Header.tsx`, `SectionNavigation.tsx`, and `DocumentMetadata.tsx`: menu behavior, anchor scrolling, and metadata updates.
+- `src/components/ui.tsx`: shared headings, section wrappers, labels, and SVG icons.
 - `src/components/Footer.tsx`: the shared “Connect with me” footer used on every page. Edit this component once to update the footer throughout the site.
 - `src/styles.css`: shared design variables, typography, and responsive styles.
 - `public/rinzai-terrado-resume.pdf`: the PDF linked by the Resume section’s download button. Keep this file synchronized with the intended public resume.
@@ -16,9 +19,9 @@ Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (pub
 - `Documents/project-plan.md`: production plan and implementation status.
 - `References/`: local reference documents, excluded from Git and the public build.
 
-The approved visual reference is `Documents/Designs/homepage-liquid-glass-approved.png`. The homepage uses white space, sans-serif typography, a centered header, the owner's portrait in a rounded panel, and one “Learn More” link to About. The document ends with a centered “Connect with me” footer, with extra space above its heading. Its Instagram link points to `rinzai._`; the email icon uses the resume's email address. Update both destinations in `src/content.ts`.
+The approved visual reference is `Documents/Designs/homepage-liquid-glass-approved.png`. The homepage uses white space, sans-serif typography, a centered header, the owner's portrait in a rounded panel, and an introduction that combines the former Home and About content. The document ends with a centered “Connect with me” footer, with extra space above its heading. Its Instagram link points to `rinzai._`; the email icon uses the resume's email address. Update both destinations in `src/content.ts`.
 
-Home and About use the supplied `public/portrait.jpg`. All sections use the same typography, quiet dividers, and restrained glass treatments. Project graphics are concept illustrations. ForgeRouter and StudyBuddy retain their prototype status. Project cards expand their notes in place; MiLady and ViralCut have been removed at the owner’s request. Proverbs contains the owner's supplied sayings and homepage tagline.
+The combined introduction uses one copy of the supplied `public/portrait.jpg`, followed by the owner’s interests. Both `/#home` and `/#about` lead to this introduction. On phones, the portrait appears between the heading and biography. Mobile controls have larger tap targets, and the navigation scrolls within the available screen height in landscape. All sections use the same typography, quiet dividers, and restrained glass treatments. Project graphics are concept illustrations. ForgeRouter and StudyBuddy retain their prototype status. Project cards expand their notes in place; MiLady and ViralCut have been removed at the owner’s request. Proverbs contains the owner's supplied sayings and homepage tagline.
 
 Commissions (`/#commissions`) features the owner's [anniversary website](https://3rdanniversary.rinzaiterrado.com/) and opens an email inquiry with a commission subject. Donate (`/#donate`) displays the supplied `public/maribank-qr.png` and `public/gcash-qr.png` with links to open or download each original. Both sections are included in navigation and the generated homepage HTML. Donation image paths and dimensions live in `donationMethods` in `src/content.ts`. The uploaded QR files are displayed unchanged, without decoding or regenerating them.
 

@@ -1,0 +1,5 @@
+import { Label, SectionHeading } from '../components/ui'
+
+export default function Proverbs() {
+  return <><SectionHeading id="proverbs" label="Personal reflections & sayings" title={<>Wisdom for the<br /><em>Mind and Soul</em></>}>A few words to pause with.</SectionHeading><section className="proverb-feature" aria-label="Personal saying"><span className="quote-mark" aria-hidden="true">“</span><blockquote>The Calmest Waves<br />Flow The <em>Firmest.</em></blockquote><span className="proverb-attribution">· Rinzai Terrado</span><div className="wave-lines" aria-hidden="true"><svg viewBox="0 0 1000 140" fill="none"><path d="M-50 70C100-70 240 200 400 70S700-60 1050 70M-50 90C100-50 240 220 400 90S700-40 1050 90M-50 110C100-30 240 240 400 110S700-20 1050 110" stroke="currentColor" strokeWidth="1" /></svg></div></section><section className="proverb-small"><Label>A little momentum</Label><blockquote>“Heaven Favors the Foolish Monkey in Motion”</blockquote><span>Rinzai Terrado</span></section><section className="proverb-small"><Label>Words to build by</Label><blockquote>“Making things happen.”</blockquote><span>Rinzai Terrado</span></section></>
+}
