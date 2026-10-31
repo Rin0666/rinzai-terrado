@@ -26,7 +26,7 @@ await build({
   },
 })
 
-const { render, pageMeta, notFoundMeta } = await import(pathToFileURL(path.join(root, '.cache/prerender/entry-server.mjs')).href)
+const { render, pageMeta, notFoundMeta, legacySections } = await import(pathToFileURL(path.join(root, '.cache/prerender/entry-server.mjs')).href)
 const routes = [...Object.keys(pageMeta), '/404']
 
 for (const route of routes) {
@@ -51,6 +51,17 @@ for (const route of routes) {
   await mkdir(path.dirname(destination), { recursive: true })
   await writeFile(destination, html)
 }
+
+// Keep links to the former pages useful, including without JavaScript.
+const redirects = []
+for (const [route, section] of Object.entries(legacySections)) {
+  const target = `/#${section}`
+  const destination = path.join(output, `${route.slice(1)}.html`)
+  await mkdir(path.dirname(destination), { recursive: true })
+  await writeFile(destination, `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="refresh" content="0;url=${target}"><meta name="robots" content="noindex,follow"><title>Continue to Rinzai Terrado</title></head><body><a href="${target}">Continue to the ${escape(section)} section</a></body></html>`)
+  redirects.push(`${route} ${target} 301`, `${route}/ ${target} 301`)
+}
+await writeFile(path.join(output, '_redirects'), `${redirects.join('\n')}\n`)
 
 await writeFile(path.join(output, 'robots.txt'), origin ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : 'User-agent: *\nDisallow: /\n')
 if (origin) {

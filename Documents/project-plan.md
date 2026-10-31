@@ -245,3 +245,15 @@ Continued the pending requests from the earlier “Set up rinzai-terrado” chat
 The owner uploaded the portrait and both QR images directly to GitHub. The supplied `public/portrait.jpg` now replaces the RT placeholder on Home and About. Donate displays `public/maribank-qr.png` and `public/gcash-qr.png` unchanged. No QR data was scanned, decoded, invented, or regenerated.
 
 Validation: TypeScript and the production build pass, including verification of 12 generated routes. Desktop/mobile browser and accessibility checks report 39 passed and one expected skip. The changed pages were also checked at seven widths from 320px to 1440px. These changes have not been deployed.
+
+
+## 14. One-page portfolio — October 31, 2026
+
+- Combined Home, About, Resume, Projects, Commissions, Proverbs, Contact, and Donate into one scrolling homepage with a single main heading and named sections.
+- Changed top navigation and internal links to section anchors, with smooth scrolling, sticky-header clearance, active-section highlighting, keyboard focus, mobile menu dismissal, and reduced-motion support.
+- Moved project case-study content into native expandable cards so visitors stay on the same page. Removed MiLady and ViralCut from the site and resume’s selected projects; ForgeRouter and StudyBuddy remain.
+- Kept the uploaded portrait, original donation QR images, resume download, commission inquiry, and contact clipboard action.
+- Generated permanent redirects and HTML fallbacks from the former page URLs to section anchors. Old links to removed projects go to the Projects section. The homepage is the single canonical and sitemap entry.
+- Verified Cloudflare’s local runtime returns permanent redirects with section fragments, real HTTP 404 responses for unknown URLs, and security headers.
+
+Validation: TypeScript, the production build, and desktop/mobile browser checks pass (25 passed, one expected desktop skip for mobile-only menu behavior). Checks cover section scrolling and focus, active navigation, history, deep links, legacy redirects, inline project filters and notes, accessibility, the original images, clipboard feedback, reduced motion, and use without JavaScript. All seven section links were also checked in Cloudflare’s local runtime at seven widths from 320px to 1440px.

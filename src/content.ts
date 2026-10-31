@@ -72,7 +72,7 @@ export const publication = {
   details: 'Volume 11 · e-ISSN 2449-3309',
 }
 
-export type ProjectCategory = 'AI systems' | 'Learning tools' | 'Media tools'
+export type ProjectCategory = 'AI systems' | 'Learning tools'
 export type Project = {
   slug: string
   number: string
@@ -106,36 +106,27 @@ export const projects: Project[] = [
     outcome: 'A personal prototype exploring AI-assisted study content, from an initial study plan to quizzes, short lessons, and presentation material.',
     diagram: ['Topic', 'Study plan', 'Practice'],
   },
-  {
-    slug: 'milady', number: '03', name: 'MiLady', subtitle: 'Exploring the personal AI agent.', category: 'AI systems',
-    description: 'A personal AI agent prototype exploring tool calling and multi-step workflows with Hermes Agent.',
-    tags: ['AI agents', 'Tool use'],
-    overview: 'MiLady is a personal AI agent prototype using the Hermes Agent ecosystem to explore tool calling, multi-step task execution, and agent workflow orchestration.',
-    focus: ['Tool calling', 'Multi-step task execution', 'Agent workflow orchestration with Hermes Agent'],
-    outcome: 'A personal prototype used to explore tool-enabled agent workflows in the Hermes Agent ecosystem.',
-    diagram: ['Request', 'Agent + tools', 'Action'],
-  },
-  {
-    slug: 'viral-cut', number: '04', name: 'ViralCut', subtitle: 'Finding moments in longer stories.', category: 'Media tools',
-    description: 'An AI-assisted prototype identifying candidate short-form clips from YouTube videos.',
-    tags: ['Video', 'AI-assisted selection'],
-    overview: 'ViralCut explores content analysis and video processing concepts to identify candidate short-form clips from longer YouTube videos.',
-    focus: ['YouTube video content analysis', 'AI-assisted candidate clip identification', 'Video processing concepts'],
-    outcome: 'A prototype exploring AI-assisted clip discovery and candidate selection from longer video content.',
-    diagram: ['Video', 'Identify', 'Candidates'],
-  },
 ]
 
+export const siteSections = [
+  { id: 'about', label: 'About' },
+  { id: 'resume', label: 'Resume' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'commissions', label: 'Commissions' },
+  { id: 'proverbs', label: 'Proverbs' },
+  { id: 'contact', label: 'Contact' },
+  { id: 'donate', label: 'Donate' },
+]
+
+export const legacySections: Record<string, string> = {
+  '/projects/milady': 'projects',
+  '/projects/viral-cut': 'projects',
+  ...Object.fromEntries(siteSections.map(section => [`/${section.id}`, section.id])),
+  ...Object.fromEntries(projects.map(project => [`/projects/${project.slug}`, `project-${project.slug}`])),
+}
+
 export const pageMeta: Record<string, { title: string; description: string }> = {
-  '/': { title: 'Rinzai Terrado — Python Developer', description: 'Python developer and former data analyst building REST APIs, data pipelines, machine learning workflows, and personal AI prototypes.' },
-  '/about': { title: 'About — Rinzai Terrado', description: 'Get to know Rinzai Terrado, a Python developer with a background in casino marketing analytics and personal AI projects.' },
-  '/resume': { title: 'Resume — Rinzai Terrado', description: 'Python development and data analytics experience, technical skills, selected AI prototypes, education, and research.' },
-  '/projects': { title: 'Projects — Rinzai Terrado', description: 'Personal prototypes in AI routing, learning, agents, and video: ForgeRouter, StudyBuddy, MiLady, and ViralCut.' },
-  '/commissions': { title: 'Commissions — Rinzai Terrado', description: 'Custom creative websites for personal stories and special occasions. Explore an anniversary website and get in touch about a commission.' },
-  '/donate': { title: 'Donate — Rinzai Terrado', description: 'Support Rinzai Terrado’s creative work and personal projects through MariBank or GCash.' },
-  '/contact': { title: 'Contact — Rinzai Terrado', description: 'Get in touch with Rinzai Terrado about Python development, data workflows, and AI applications.' },
-  '/proverbs': { title: 'Proverbs — Rinzai Terrado', description: 'Personal reflections and sayings by Rinzai Terrado. The Calmest Waves Flow The Firmest.' },
-  ...Object.fromEntries(projects.map(project => [`/projects/${project.slug}`, { title: `${project.name} — Rinzai Terrado`, description: project.description }])),
+  '/': { title: 'Rinzai Terrado — Python Developer', description: 'Python developer and former data analyst building REST APIs, data pipelines, machine learning workflows, and personal AI prototypes. Explore my experience, projects, and creative commissions.' },
 }
 
 export const notFoundMeta = { title: 'Page not found — Rinzai Terrado', description: 'This page could not be found. Explore Rinzai Terrado’s resume, projects, or contact information.' }
