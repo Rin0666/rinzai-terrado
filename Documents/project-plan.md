@@ -232,3 +232,16 @@ The “Connect with me” heading, Instagram and email icons, and location now l
 ### Content and navigation refinement
 
 Section labels and the resume sidebar use unnumbered text. About displays the owner's interests (YuGiOh, Fishing, and Schemes) in place of the education summary; education remains on Resume. The custom print button and print-specific styling have been removed.
+
+## 13. Creative pages and Proverbs — October 31, 2026
+
+Continued the pending requests from the earlier “Set up rinzai-terrado” chat:
+
+- Added Commissions to the shared navigation, with a dedicated page featuring `https://3rdanniversary.rinzaiterrado.com/` and an email inquiry link.
+- Added Donate to the shared navigation, with separate MariBank and GCash cards displaying the owner's uploaded images, plus full-size and download links.
+- Added “Heaven Favors the Foolish Monkey in Motion” to Proverbs, retaining the existing saying and tagline.
+- Registered both new routes for generated HTML and route metadata, and adjusted navigation spacing and the mobile breakpoint for the extra links.
+
+The owner uploaded the portrait and both QR images directly to GitHub. The supplied `public/portrait.jpg` now replaces the RT placeholder on Home and About. Donate displays `public/maribank-qr.png` and `public/gcash-qr.png` unchanged. No QR data was scanned, decoded, invented, or regenerated.
+
+Validation: TypeScript and the production build pass, including verification of 12 generated routes. Desktop/mobile browser and accessibility checks report 39 passed and one expected skip. The changed pages were also checked at seven widths from 320px to 1440px. These changes have not been deployed.

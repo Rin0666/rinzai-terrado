@@ -48,6 +48,16 @@ export const skillGroups = [
 
 export const interests = ['YuGiOh', 'Fishing', 'Schemes']
 
+export const commissions = {
+  exampleUrl: 'https://3rdanniversary.rinzaiterrado.com/',
+  inquiryUrl: `mailto:${profile.email}?subject=${encodeURIComponent('Creative website commission')}`,
+}
+
+export const donationMethods = [
+  { name: 'MariBank', qrUrl: '/maribank-qr.png', width: 710, height: 784 },
+  { name: 'GCash', qrUrl: '/gcash-qr.png', width: 912, height: 1055 },
+]
+
 export const education = {
   school: 'De La Salle University',
   location: 'Manila, Philippines',
@@ -121,6 +131,8 @@ export const pageMeta: Record<string, { title: string; description: string }> = 
   '/about': { title: 'About — Rinzai Terrado', description: 'Get to know Rinzai Terrado, a Python developer with a background in casino marketing analytics and personal AI projects.' },
   '/resume': { title: 'Resume — Rinzai Terrado', description: 'Python development and data analytics experience, technical skills, selected AI prototypes, education, and research.' },
   '/projects': { title: 'Projects — Rinzai Terrado', description: 'Personal prototypes in AI routing, learning, agents, and video: ForgeRouter, StudyBuddy, MiLady, and ViralCut.' },
+  '/commissions': { title: 'Commissions — Rinzai Terrado', description: 'Custom creative websites for personal stories and special occasions. Explore an anniversary website and get in touch about a commission.' },
+  '/donate': { title: 'Donate — Rinzai Terrado', description: 'Support Rinzai Terrado’s creative work and personal projects through MariBank or GCash.' },
   '/contact': { title: 'Contact — Rinzai Terrado', description: 'Get in touch with Rinzai Terrado about Python development, data workflows, and AI applications.' },
   '/proverbs': { title: 'Proverbs — Rinzai Terrado', description: 'Personal reflections and sayings by Rinzai Terrado. The Calmest Waves Flow The Firmest.' },
   ...Object.fromEntries(projects.map(project => [`/projects/${project.slug}`, { title: `${project.name} — Rinzai Terrado`, description: project.description }])),

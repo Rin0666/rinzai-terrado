@@ -22,11 +22,13 @@ test('navigation works, updates metadata, and closes the mobile menu', async ({ 
 
 test('homepage leads to the biography and exposes the supplied social destinations', async ({ page }) => {
   await page.goto('/')
+  await expect(page.getByRole('img', { name: 'Rinzai Terrado', exact: true })).toHaveJSProperty('naturalWidth', 3024)
   await expect(page.getByRole('link', { name: /Instagram:/ })).toHaveAttribute('href', 'https://www.instagram.com/rinzai._/')
   await expect(page.getByRole('link', { name: 'Email Rinzai Terrado' })).toHaveAttribute('href', 'mailto:terradorinzai@gmail.com')
   await page.getByRole('link', { name: 'Learn More', exact: true }).click()
   await expect(page).toHaveURL('/about')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Get to Know me.')
+  await expect(page.getByRole('img', { name: 'Rinzai Terrado', exact: true })).toHaveJSProperty('naturalWidth', 3024)
 })
 
 test('project filters change results and project detail routes survive reload', async ({ page }) => {
@@ -61,7 +63,35 @@ test('mobile menu can be dismissed with Escape', async ({ page, isMobile }) => {
   await expect(page.getByRole('button', { name: 'Menu' })).toHaveAttribute('aria-expanded', 'false')
 })
 
-for (const route of ['/', '/about', '/resume', '/projects', '/projects/forge-router', '/projects/study-buddy', '/projects/milady', '/projects/viral-cut', '/proverbs', '/contact', '/missing-page']) {
+test('new navigation exposes creative commissions and donation methods', async ({ page, isMobile }) => {
+  await page.goto('/')
+  if (isMobile) await page.getByRole('button', { name: 'Menu' }).click()
+  await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Commissions', exact: true }).click()
+  await expect(page).toHaveURL('/commissions')
+  await expect(page).toHaveTitle('Commissions — Rinzai Terrado')
+  await expect(page.getByRole('link', { name: 'Explore the anniversary site', exact: false })).toHaveAttribute('href', 'https://3rdanniversary.rinzaiterrado.com/')
+  await expect(page.getByRole('link', { name: 'Discuss a commission' })).toHaveAttribute('href', 'mailto:terradorinzai@gmail.com?subject=Creative%20website%20commission')
+  await page.reload()
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Personal stories.')
+  if (isMobile) await page.getByRole('button', { name: 'Menu' }).click()
+  await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Donate', exact: true }).click()
+  await expect(page).toHaveURL('/donate')
+  await expect(page).toHaveTitle('Donate — Rinzai Terrado')
+  await expect(page.getByRole('heading', { name: 'MariBank', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'GCash', exact: true })).toBeVisible()
+  for (const [name, path, width] of [['MariBank', '/maribank-qr.png', 710], ['GCash', '/gcash-qr.png', 912]] as const) {
+    const image = page.getByRole('img', { name: `${name} donation QR code for Rinzai Terrado`, exact: true })
+    await expect(image).toHaveAttribute('src', path)
+    await expect(image).toHaveJSProperty('naturalWidth', width)
+    await expect(page.getByRole('link', { name: `Open the full-size ${name} donation QR code` })).toHaveAttribute('href', path)
+    await expect(page.getByRole('link', { name: `Save ${name} QR code` })).toHaveAttribute('download', '')
+  }
+  if (isMobile) await expect(page.getByRole('button', { name: 'Menu' })).toHaveAttribute('aria-expanded', 'false')
+  await page.goto('/proverbs')
+  await expect(page.getByRole('blockquote').filter({ hasText: 'Heaven Favors the Foolish Monkey in Motion' })).toBeVisible()
+})
+
+for (const route of ['/', '/about', '/resume', '/projects', '/projects/forge-router', '/projects/study-buddy', '/projects/milady', '/projects/viral-cut', '/commissions', '/donate', '/proverbs', '/contact', '/missing-page']) {
   test(`accessible, responsive page at ${route}`, async ({ page }) => {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))

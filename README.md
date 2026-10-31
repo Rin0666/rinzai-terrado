@@ -16,9 +16,11 @@ Source: [Rin0666/rinzai-terrado](https://github.com/Rin0666/rinzai-terrado) (pub
 - `Documents/project-plan.md`: production plan and implementation status.
 - `References/`: local reference documents, excluded from Git and the public build.
 
-The approved visual reference is `Documents/Designs/homepage-liquid-glass-approved.png`. The homepage uses white space, sans-serif typography, a centered header, a translucent RT panel, and one “Learn More” link to About. Every page ends with the same centered “Connect with me” footer, with extra space above its heading. Its Instagram link points to `rinzai._`; the email icon uses the resume's email address. Update both destinations in `src/content.ts`.
+The approved visual reference is `Documents/Designs/homepage-liquid-glass-approved.png`. The homepage uses white space, sans-serif typography, a centered header, the owner's portrait in a rounded panel, and one “Learn More” link to About. Every page ends with the same centered “Connect with me” footer, with extra space above its heading. Its Instagram link points to `rinzai._`; the email icon uses the resume's email address. Update both destinations in `src/content.ts`.
 
-The glass RT panel occupies the portrait position until a real photo is supplied. The remaining pages use the same typography, quiet dividers, and restrained glass treatments. Project graphics are concept illustrations. The four personal projects retain their prototype status. Proverbs contains the owner's supplied saying and homepage tagline. Donate is deferred until a destination is supplied.
+Home and About use the supplied `public/portrait.jpg`. The remaining pages use the same typography, quiet dividers, and restrained glass treatments. Project graphics are concept illustrations. The four personal projects retain their prototype status. Proverbs contains the owner's supplied sayings and homepage tagline.
+
+Commissions (`/commissions`) features the owner's [anniversary website](https://3rdanniversary.rinzaiterrado.com/) and opens an email inquiry with a commission subject. Donate (`/donate`) displays the supplied `public/maribank-qr.png` and `public/gcash-qr.png` with links to open or download each original. Both pages are included in navigation and the generated HTML. Donation image paths and dimensions live in `donationMethods` in `src/content.ts`. The uploaded QR files are displayed unchanged, without decoding or regenerating them.
 
 To capture updated review screenshots, run the production preview on port 4174 and then `node scripts/capture-preview.mjs`. This also regenerates the social card; run the build afterward to copy it into `dist`.
 

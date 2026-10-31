@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router'
-import { education, experience, interests, notFoundMeta, pageMeta, profile, projects, publication, skillGroups } from './content'
+import { commissions, donationMethods, education, experience, interests, notFoundMeta, pageMeta, profile, projects, publication, skillGroups } from './content'
 import type { Project, ProjectCategory } from './content'
 import Footer from './components/Footer'
 
@@ -21,8 +21,10 @@ const navigation = [
   { path: '/about', label: 'About' },
   { path: '/resume', label: 'Resume' },
   { path: '/projects', label: 'Projects' },
+  { path: '/commissions', label: 'Commissions' },
   { path: '/proverbs', label: 'Proverbs' },
   { path: '/contact', label: 'Contact' },
+  { path: '/donate', label: 'Donate' },
 ]
 
 function Header() {
@@ -89,8 +91,8 @@ function PageEffects() {
   return null
 }
 
-function Monogram() {
-  return <div className="identity-art" role="img" aria-label="RT initials in a translucent glass panel"><span className="monogram" aria-hidden="true">RT</span></div>
+function Portrait() {
+  return <div className="identity-art identity-portrait"><img src="/portrait.jpg" alt="Rinzai Terrado" width="3024" height="4032" decoding="async" fetchPriority="high" /></div>
 }
 
 function ProjectArt({ project }: { project: Project }) {
@@ -110,12 +112,12 @@ function ProjectCard({ project }: { project: Project }) {
 
 function Home() {
   return <>
-    <section className="hero" aria-labelledby="home-title"><div className="hero-copy"><h1 id="home-title">Rinzai Terrado</h1><p className="hero-tagline">Making things happen.</p><Label>Python development · AI applications</Label><p className="hero-bio">I build Python applications, APIs, machine learning workflows, and automation at <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila</a>. My background in marketing analytics informs how I turn data into useful tools, while my personal projects explore AI systems.</p><div className="hero-actions"><Link to="/about" className="button button-dark">Learn More</Link></div></div><Monogram /></section>
+    <section className="hero" aria-labelledby="home-title"><div className="hero-copy"><h1 id="home-title">Rinzai Terrado</h1><p className="hero-tagline">Making things happen.</p><Label>Python development · AI applications</Label><p className="hero-bio">I build Python applications, APIs, machine learning workflows, and automation at <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila</a>. My background in marketing analytics informs how I turn data into useful tools, while my personal projects explore AI systems.</p><div className="hero-actions"><Link to="/about" className="button button-dark">Learn More</Link></div></div><Portrait /></section>
   </>
 }
 
 function About() {
-  return <><PageHeading label="A little about me" title={<>Get to Know me.</>}>I’m Rinzai Terrado, a Python developer with a background in data analytics, based in the Philippines.</PageHeading><section className="about-layout"><Monogram /><div className="prose"><Label>What I do</Label><h2>Connecting ideas<br />to everyday work.</h2><p>At <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila <span aria-hidden="true">↗</span></a>, I build and maintain internal applications that support marketing, analytics, and business operations.</p><p>My work brings together APIs, SQL data sources, machine learning models, and automated workflows. I help turn data and model outputs into tools that teams can use.</p><p>Outside of work, I prototype LLM routing, AI-powered learning tools, agent workflows, and video analysis. I’m also developing familiarity with retrieval-augmented generation (RAG), MCP, and NLP.</p><Link to="/resume" className="text-link">The full resume <Arrow /></Link></div></section><section className="section interests-summary" aria-labelledby="interests-heading"><h2 id="interests-heading">Interests</h2><ul className="interests-list">{interests.map(interest => <li key={interest}>{interest}</li>)}</ul></section></>
+  return <><PageHeading label="A little about me" title={<>Get to Know me.</>}>I’m Rinzai Terrado, a Python developer with a background in data analytics, based in the Philippines.</PageHeading><section className="about-layout"><Portrait /><div className="prose"><Label>What I do</Label><h2>Connecting ideas<br />to everyday work.</h2><p>At <a href={profile.employerUrl} target="_blank" rel="noreferrer">Okada Manila <span aria-hidden="true">↗</span></a>, I build and maintain internal applications that support marketing, analytics, and business operations.</p><p>My work brings together APIs, SQL data sources, machine learning models, and automated workflows. I help turn data and model outputs into tools that teams can use.</p><p>Outside of work, I prototype LLM routing, AI-powered learning tools, agent workflows, and video analysis. I’m also developing familiarity with retrieval-augmented generation (RAG), MCP, and NLP.</p><Link to="/resume" className="text-link">The full resume <Arrow /></Link></div></section><section className="section interests-summary" aria-labelledby="interests-heading"><h2 id="interests-heading">Interests</h2><ul className="interests-list">{interests.map(interest => <li key={interest}>{interest}</li>)}</ul></section></>
 }
 
 function Resume() {
@@ -191,7 +193,44 @@ function ProjectDetail() {
 }
 
 function Proverbs() {
-  return <><PageHeading label="Personal reflections & sayings" title={<>Wisdom for the<br /><em>Mind and Soul</em></>}>A few words to pause with.</PageHeading><section className="proverb-feature" aria-label="Personal saying"><span className="quote-mark" aria-hidden="true">“</span><blockquote>The Calmest Waves<br />Flow The <em>Firmest.</em></blockquote><span className="proverb-attribution">· Rinzai Terrado</span><div className="wave-lines" aria-hidden="true"><svg viewBox="0 0 1000 140" fill="none"><path d="M-50 70C100-70 240 200 400 70S700-60 1050 70M-50 90C100-50 240 220 400 90S700-40 1050 90M-50 110C100-30 240 240 400 110S700-20 1050 110" stroke="currentColor" strokeWidth="1" /></svg></div></section><section className="proverb-small"><Label>Words to build by</Label><blockquote>“Making things happen.”</blockquote><span>Rinzai Terrado</span></section></>
+  return <><PageHeading label="Personal reflections & sayings" title={<>Wisdom for the<br /><em>Mind and Soul</em></>}>A few words to pause with.</PageHeading><section className="proverb-feature" aria-label="Personal saying"><span className="quote-mark" aria-hidden="true">“</span><blockquote>The Calmest Waves<br />Flow The <em>Firmest.</em></blockquote><span className="proverb-attribution">· Rinzai Terrado</span><div className="wave-lines" aria-hidden="true"><svg viewBox="0 0 1000 140" fill="none"><path d="M-50 70C100-70 240 200 400 70S700-60 1050 70M-50 90C100-50 240 220 400 90S700-40 1050 90M-50 110C100-30 240 240 400 110S700-20 1050 110" stroke="currentColor" strokeWidth="1" /></svg></div></section><section className="proverb-small"><Label>A little momentum</Label><blockquote>“Heaven Favors the Foolish Monkey in Motion”</blockquote><span>Rinzai Terrado</span></section><section className="proverb-small"><Label>Words to build by</Label><blockquote>“Making things happen.”</blockquote><span>Rinzai Terrado</span></section></>
+}
+
+function Commissions() {
+  return <>
+    <PageHeading label="Creative commissions" title={<>Small websites.<br /><em>Personal stories.</em></>}>Custom creative websites for the people, moments, and stories that matter to you.</PageHeading>
+    <section className="commission-feature" aria-labelledby="commission-example-title">
+      <a className="commission-art" href={commissions.exampleUrl} target="_blank" rel="noreferrer" aria-label="Visit the anniversary website (opens in a new tab)">
+        <span className="commission-art-note">A moment, made into a website</span>
+        <span className="commission-art-heart" aria-hidden="true">♡</span>
+        <span className="commission-art-title" aria-hidden="true">For the memories.<br />For the two of you.</span>
+        <span className="commission-art-link">View anniversary website <Arrow diagonal /></span>
+      </a>
+      <div className="commission-copy prose">
+        <Label>Featured creative work</Label>
+        <h2 id="commission-example-title">An anniversary,<br />a little differently.</h2>
+        <p>A personal website to celebrate a shared story. Explore my anniversary site for an example of the creative work I make.</p>
+        <a className="text-link" href={commissions.exampleUrl} target="_blank" rel="noreferrer">Explore the anniversary site <Arrow diagonal /><span className="sr-only"> (opens in a new tab)</span></a>
+      </div>
+    </section>
+    <section className="commission-inquiry" aria-labelledby="commission-inquiry-title">
+      <div><Label>Have something in mind?</Label><h2 id="commission-inquiry-title">Let’s make it personal.</h2><p>Tell me about your idea, the occasion, and when you need it. We can talk through the details by email.</p></div>
+      <a className="button button-dark" href={commissions.inquiryUrl}>Discuss a commission <Arrow diagonal /></a>
+    </section>
+  </>
+}
+
+function Donate() {
+  return <>
+    <PageHeading label="Support my work" title={<>A little support.<br /><em>More possibilities.</em></>}>Thank you for supporting my creative work and personal projects.</PageHeading>
+    <section className="donation-grid" aria-label="Donation methods">
+      {donationMethods.map(method => <article className="donation-card" key={method.name}>
+        <h2>{method.name}</h2>
+        <a href={method.qrUrl} target="_blank" rel="noreferrer" aria-label={`Open the full-size ${method.name} donation QR code`}><img className="donation-qr" src={method.qrUrl} alt={`${method.name} donation QR code for Rinzai Terrado`} width={method.width} height={method.height} decoding="async" /></a>
+        <a className="text-link" href={method.qrUrl} download>Save {method.name} QR code <Arrow /></a>
+      </article>)}
+    </section>
+  </>
 }
 
 function Contact() {
@@ -213,5 +252,5 @@ function NotFound() {
 }
 
 export default function App() {
-  return <><a className="skip-link" href="#main-content">Skip to content</a><PageEffects /><Header /><main id="main-content" tabIndex={-1} className="shell"><Routes><Route path="/" element={<Home />} /><Route path="/about" element={<About />} /><Route path="/resume" element={<Resume />} /><Route path="/projects" element={<Projects />} /><Route path="/projects/:slug" element={<ProjectDetail />} /><Route path="/proverbs" element={<Proverbs />} /><Route path="/contact" element={<Contact />} /><Route path="*" element={<NotFound />} /></Routes></main><Footer /></>
+  return <><a className="skip-link" href="#main-content">Skip to content</a><PageEffects /><Header /><main id="main-content" tabIndex={-1} className="shell"><Routes><Route path="/" element={<Home />} /><Route path="/about" element={<About />} /><Route path="/resume" element={<Resume />} /><Route path="/projects" element={<Projects />} /><Route path="/projects/:slug" element={<ProjectDetail />} /><Route path="/commissions" element={<Commissions />} /><Route path="/donate" element={<Donate />} /><Route path="/proverbs" element={<Proverbs />} /><Route path="/contact" element={<Contact />} /><Route path="*" element={<NotFound />} /></Routes></main><Footer /></>
 }
